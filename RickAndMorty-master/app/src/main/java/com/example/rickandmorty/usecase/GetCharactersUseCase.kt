@@ -34,6 +34,7 @@ class GetCharactersUseCase {
                 .observeOn(AndroidSchedulers.mainThread())
         }
         Log.d(TAG, "getCharacters $page")
+        Log.d(TAG, "getCharacters $page")
         return characterList
 
 //repository.connectionState
