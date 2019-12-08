@@ -21,18 +21,19 @@ class GetCharactersUseCase {
 
     fun getCharacters(page: Int) : Observable<CharacterList>{
         Log.d(TAG, "getCharacters $page")
-        var characterList: Observable<CharacterList>
+        val characterList: Observable<CharacterList>
         repository.connectionState.map { it -> it }.subscribe()
         if (true){
             characterList =  repository.getCharactersNetwork(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { t:Throwable -> Log.d(TAG, t.message ) }
+               // .doOnError { t:Throwable -> Log.d(TAG, t.message ) }
         }else{
            characterList = repository.getCharactersNetwork(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         }
+        Log.d(TAG, "getCharacters $page")
         return characterList
 
 //repository.connectionState
